@@ -1,0 +1,119 @@
+Name: Alarms
+Type: FolderType
+Children:
+- Name: ImportAndExportAlarms
+  Type: NetLogic
+  WriteMask: BrowseName|DataType|Description|DisplayName|MinimumSamplingInterval|UserAccessLevel
+  Children:
+  - Name: BehaviourStartPriority
+    Type: BehaviourStartPriorityVariableType
+    DataType: Byte
+    Value: 180
+  - Class: Method
+    Name: ImportAlarms
+  - Class: Method
+    Name: ExportAlarms
+  - Name: CSVPath
+    Type: BaseDataVariableType
+    DataType: AbsoluteResourceUri
+    Value: "file:///C:/Users/n0562733/Documents/Rockwell Automation/FactoryTalk Optix/Projects/import_export_alarms/ProjectFiles/alarms_import_export.csv"
+  - Name: CharacterSeparator
+    Type: BaseDataVariableType
+    DataType: String
+    Value: ","
+  - Name: WrapFields
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+  - Name: MessageAsTranslationKey
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
+- Name: DigitalAlarm1
+  Type: OffNormalAlarmController
+  Children:
+  - Name: NormalStateValue
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 0.0
+  - Name: InputValue
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 0.0
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "{NodeId:ns=16;g=1e0696e4-a947-61c0-c5d7-59cf2d094bf9}"
+  - Name: LastEvent
+    Type: BaseDataVariableType
+    DataType: BaseDataType
+    ValueRank: OneDimension
+    ArrayDimensions: [0]
+  - Class: Reference
+    Target: ns=9;i=81
+    Direction: Forward
+  - Class: Reference
+    Target: ns=9;i=82
+    Direction: Forward
+  - Class: Reference
+    Target: ns=9;i=83
+    Direction: Forward
+  - Name: AutoAcknowledge
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+  - Name: AutoConfirm
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+  - Name: Message
+    Type: BaseDataVariableType
+    DataType: LocalizedText
+    Value: {"LocaleId":"en-US","Text":"Something is alarming!"}
+- Name: ExclusiveLevelAlarm1
+  Type: ExclusiveLevelAlarmController
+  Children:
+  - Name: InputValue
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 0.0
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "{NodeId:ns=16;g=ad8e7455-2072-edc0-0dd1-3b1dd91e5e74}"
+  - Name: LastEvent
+    Type: BaseDataVariableType
+    DataType: BaseDataType
+    ValueRank: OneDimension
+    ArrayDimensions: [0]
+  - Class: Reference
+    Target: ns=9;i=81
+    Direction: Forward
+  - Class: Reference
+    Target: ns=9;i=82
+    Direction: Forward
+  - Class: Reference
+    Target: ns=9;i=83
+    Direction: Forward
+  - Name: Message
+    Type: BaseDataVariableType
+    DataType: LocalizedText
+    Value: {"LocaleId":"en-US","Text":"Something else is alarming!"}
+  - Name: HighHighLimit
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 5.0
+  - Name: HighLimit
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: 3.0
+  - Name: LowLimit
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -2.0
+  - Name: LowLowLimit
+    Type: BaseDataVariableType
+    DataType: Double
+    Value: -4.0
